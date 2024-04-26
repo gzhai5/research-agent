@@ -18,7 +18,7 @@ export default function GenerateOne() {
                 <div className='text-2xl text-center text-white'>Welcome to <br/> the Research Agents</div>
 
                 {/* text description */}
-                <div className='text-base text-center text-slate-300 mt-2 px-2'>Welcome to our app! To create a personalized research companion just for you, we&apos;ll ask a few questions. Let&apos;s get started!.</div>
+                <div className='text-base text-center text-slate-300 mt-2 px-2'>Welcome to our app! To create a personalized research companion just for you, we&apos;ll ask a few questions. Let&apos;s get started!</div>
 
                 {/* button */}
                 <Link href='/auth/generate/2'>

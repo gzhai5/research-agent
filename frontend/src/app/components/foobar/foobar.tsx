@@ -3,7 +3,7 @@ export default function Foobar() {
         <footer className="footer footer-center p-10 bg-slate-100 text-primary-content">
             <aside>
                 <p className="font-bold text-black">
-                    Luga AI <br/>Providing Customers Reliable and Customized AI Solutions
+                    Research Agents <br/>Your powerful & personalized research companion
                 </p> 
                 <p className="text-black">Copyright © 2024 - All right reserved</p>
             </aside> 

@@ -47,7 +47,7 @@ export default function Navbar() {
 
             {/* title */}
             <div className="navbar-center">
-                <a className="btn btn-ghost text-3xl text-black">Luga AI</a>
+                <a className="btn btn-ghost text-3xl text-black font-medium">Research Agents</a>
             </div>
 
             {/* profile */}
