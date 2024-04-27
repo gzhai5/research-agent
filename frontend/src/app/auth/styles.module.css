@@ -12,6 +12,10 @@
     background: radial-gradient(circle at center, rgba(120, 119, 198, 0.3) 10%, rgba(255, 255, 255, 0) 100%);
 }
 
+.radient-bg-fill-2 {
+    background: radial-gradient(ellipse at center, rgba(120, 119, 198, 0.3) 10%, rgba(255, 255, 255, 0) 80%);
+}
+
 .radient-ball {
     background: 
         radial-gradient(ellipse at top, #e66465, transparent),

@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 
 
 export default function Navbar() {
@@ -20,34 +21,21 @@ export default function Navbar() {
     };
 
     return (
-        <div className="navbar bg-slate-100">
+        <div className={`navbar bg-transparent`}>
 
             {/* drawer */}
             <div className="navbar-start">
-                <div className="drawer">
-                    <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
-
-                    {/* drawer title */}
-                    <div className="drawer-content">
-                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle text-black" onClick={toggleDrawer}>
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
-                        </div>
-                    </div>
-
-                    {/* drawer content disabled */}
-                    {/* <div className="drawer-side z-10">
-                        <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-                        <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
-                            <li><a>Sidebar Item 1</a></li>
-                            <li><a>Sidebar Item 2</a></li>
-                        </ul>
-                    </div> */}
-                </div>
+                <Image src="/agent-logo.png" alt="logo" width={30} height={30} />
+                <a className="btn btn-ghost text-2xl text-[#F7F8F8] font-medium">Research Agents</a>
             </div>
 
             {/* title */}
-            <div className="navbar-center">
-                <a className="btn btn-ghost text-3xl text-black font-medium">Research Agents</a>
+            <div className="navbar-center hidden lg:flex">
+                <ul className="menu menu-horizontal px-1 text-[#F7F8F8]">
+                    <li><a>Lab</a></li>
+                    <li><a>Pricing</a></li>
+                    <li><a>Contact</a></li>
+                </ul>
             </div>
 
             {/* profile */}
@@ -59,12 +47,12 @@ export default function Navbar() {
                         </div>
                     </div>
 
-                    {/* dropdown content disabled */}
-                    {/* <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-slate-100 rounded-box w-52">
-                        <li><a className="text-black">Profile</a></li>
-                        <li><a className="text-black">Settings</a></li>
-                        <li><a className="text-black">Logout</a></li>
-                    </ul> */}
+                    {/* dropdown content */}
+                    <ul tabIndex={0} className={`menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-slate-100 rounded-box w-52 text-[#F7F8F8] bg-black`}>
+                        <li><a className="text-[#F7F8F8]">Profile</a></li>
+                        <li><a className="text-[#F7F8F8]">Settings</a></li>
+                        <li><a className="text-[#F7F8F8]">Logout</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
