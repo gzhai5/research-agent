@@ -1,0 +1,3 @@
+temp/*
+vector_store/*
+chroma.sqlite3
