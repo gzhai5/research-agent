@@ -48,7 +48,7 @@ export default function Chat() {
                         if (fileInput) { fileInput.click();}
                     }} />
                     <input type="file" id="fileInput" className='hidden' onChange={handleFileSelect} />
-                    <input type="text" placeholder="Message your Agent..." className="input bg-transparent w-full" />
+                    <input type="text" placeholder="Message your agent..." className="input bg-transparent w-full" />
                     <IconButton>
                         <SendIcon className="text-white" />
                     </IconButton>

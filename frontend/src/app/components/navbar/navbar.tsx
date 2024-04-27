@@ -48,7 +48,7 @@ export default function Navbar() {
                     </div>
 
                     {/* dropdown content */}
-                    <ul tabIndex={0} className={`menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-slate-100 rounded-box w-52 text-[#F7F8F8] bg-black`}>
+                    <ul tabIndex={0} className={`menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-slate-100 rounded-box w-52 text-[#F7F8F8] bg-transparent`}>
                         <li><a className="text-[#F7F8F8]">Profile</a></li>
                         <li><a className="text-[#F7F8F8]">Settings</a></li>
                         <li><a className="text-[#F7F8F8]">Logout</a></li>
