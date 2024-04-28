@@ -18,5 +18,8 @@ class Settings(BaseSettings):
     AWS_SECRET_ACCESS_KEY: str = os.getenv("AWS_SECRET_ACCESS_KEY")
     s3_bucket: str = os.getenv("AWS_BUCKET")
 
+    # AI
+    openai_api_key: str = os.getenv("OPENAI_API_KEY")
+
 
 settings = Settings()

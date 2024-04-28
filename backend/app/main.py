@@ -6,6 +6,7 @@ from loguru import logger
 from app.utils.database import test_mongodb_connection
 from app.common.common_router import router as common_router
 from app.auth.auth_router import router as auth_router
+from app.ai.ai_router import router as ai_router
 
 
 # Create the app
@@ -35,6 +36,7 @@ app.add_middleware(
 # include the routers
 app.include_router(common_router)
 app.include_router(auth_router)
+app.include_router(ai_router)
 
 
 # Home route
