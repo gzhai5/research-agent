@@ -11,6 +11,11 @@ export default function Navbar() {
         setUsername(localStorage.getItem('username') || '');
     }, []);
 
+    const handleLogout = () => {
+        localStorage.clear();
+        window.location.href = '/';
+    };
+
 
     // handle cart drawer open/close
     const toggleDrawer = () => {
@@ -51,7 +56,7 @@ export default function Navbar() {
                     <ul tabIndex={0} className={`menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-slate-100 rounded-box w-52 text-[#F7F8F8] bg-transparent`}>
                         <li><a className="text-[#F7F8F8]">Profile</a></li>
                         <li><a className="text-[#F7F8F8]">Settings</a></li>
-                        <li><a className="text-[#F7F8F8]">Logout</a></li>
+                        <li><a className="text-[#F7F8F8]" onClick={() => handleLogout()}>Logout</a></li>
                     </ul>
                 </div>
             </div>
