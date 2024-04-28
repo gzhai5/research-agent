@@ -15,9 +15,10 @@ class AIService:
 
     def invoke_text(self, model: str, text: str):
         if model == 'gpt-4-turbo':
+            gpt_response = self.openai_llm.invoke(text)
             return {
                 'model': model,
-                'response': self.openai_llm.invoke(text)
+                'response': gpt_response.content
             }
         else:
             logger.error('AI Model not found')
