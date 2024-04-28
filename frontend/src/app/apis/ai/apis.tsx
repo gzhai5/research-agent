@@ -8,6 +8,6 @@ export const invoke = async (body: InvokeRequestBody): Promise<InvokeResponse> =
 }
 
 export const askPdf = async (query: string): Promise<AskPdfResponse> => {
-    const res = await instance.post("/ai/ask-pdf", { query });
+    const res = await instance.post("/ai/ask-pdf?query=" + query);
     return res.data;
 }
