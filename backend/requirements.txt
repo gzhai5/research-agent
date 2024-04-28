@@ -17,8 +17,10 @@ langchain==0.1.16
 langchain-community==0.0.34
 langchain-core==0.1.45
 langchain-text-splitters==0.0.1
+langchain-openai==0.0.5
 langsmith==0.1.49
 fastembed==0.2.6
 pdfplumber==0.11.0
 chroma-hnswlib==0.7.3
 chromadb==0.4.24
+openai==1.11.1

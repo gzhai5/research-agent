@@ -1,11 +1,14 @@
 "use client";
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '../components/navbar/navbar';
 import styles from '../auth/styles.module.css';
 import Spline from '@splinetool/react-spline';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import SendIcon from '@mui/icons-material/Send';
 import IconButton from '@mui/material/IconButton';
+import { PdfUpload } from '../apis/common/apis';
+import { invoke, askPdf } from '../apis/ai/apis';
+import swal from 'sweetalert';
 
 
 const exampleConversationHistory = [
@@ -23,12 +26,28 @@ const exampleConversationHistory = [
 
 
 export default function Chat() {
+    const [pdf, setPdf] = useState<File | null>(null);
+    const [query, setQuery] = useState<string>('');
+
+
     const handleFileSelect = (e: any) => {
         const file = e.target.files[0];
-        console.log(file);
+        setPdf(file);
     }
 
+    const handleSubmit = async (e: any) => {
+        e.preventDefault();
 
+        // ask question
+        if (!pdf && query) {
+            const response = await invoke({ model: "gpt-4-turbo", text: query });
+            swal('Response', response.response, 'success');
+        } else if (pdf && query) {
+            await PdfUpload(pdf);
+            const response = await askPdf(query);
+            swal('Response', response.answer, 'success');
+        }
+    }
 
     return (
         <div className={`bg-[#000212] ${styles['radient-bg-fill-2']}`}>
@@ -42,17 +61,23 @@ export default function Chat() {
                 </div>
 
                 {/* initial chat */}
-                <div className={`w-2/4 h-[4rem] min-w-[25rem] flex flex-row items-center justify-center px-4 gap-2 rounded-lg z-10 ${styles['custom-glass-card']}`}>
+                <form onSubmit={handleSubmit} className={`w-2/4 h-[4rem] min-w-[25rem] flex flex-row items-center justify-center px-4 gap-2 rounded-lg z-10 ${styles['custom-glass-card']}`}>
                     <AttachFileIcon className="text-white cursor-pointer" onClick={() => {
                         const fileInput = document.getElementById('fileInput');
                         if (fileInput) { fileInput.click();}
                     }} />
                     <input type="file" id="fileInput" className='hidden' onChange={handleFileSelect} />
-                    <input type="text" placeholder="Message your agent..." className="input bg-transparent w-full" />
-                    <IconButton>
+                    <input 
+                        type="text" 
+                        placeholder="Message your agent..." 
+                        className="input bg-transparent w-full"
+                        value={query}
+                        onChange={(e) => setQuery(e.target.value)}
+                    />
+                    <IconButton type="submit">
                         <SendIcon className="text-white" />
                     </IconButton>
-                </div>
+                </form>
 
                 {/* chat history */}
                 <div className={`w-3/4 h-[30rem] min-w-[25rem] min-h-[20rem] items-center justify-center p-6 rounded-lg z-10 ${styles['custom-glass-card']} hidden`}>

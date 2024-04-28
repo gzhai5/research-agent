@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import styles from '../styles.module.css';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
+import swal from 'sweetalert';
+import { register } from '../../apis/auth/apis';
 
 
 export default function Register () {
@@ -10,6 +12,21 @@ export default function Register () {
     const [password, setPassword] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [activationCode, setActivationCode] = useState<string>('');
+
+
+    const handleSubmit = async () => {
+        if (username === '') { swal('Error', 'Username cannot be empty', 'error'); return; }
+        else if (password === '') { swal('Error', 'Password cannot be empty', 'error'); return; }
+        else if (email === '') { swal('Error', 'Email cannot be empty', 'error'); return; }
+        else if (email.split('.')[email.split('.').length - 1] !== 'edu') { swal('Error', 'Please use your university email to prove your researcher identity', 'error'); return; }
+        else if (activationCode == '') { swal('Error', 'Activation code cannot be empty', 'error'); return; }
+        else if (activationCode !== correctActivationCode) { swal('Error', 'Invalid activation code', 'error'); return; }
+        
+        const response = await register({username, password, email});
+        localStorage.setItem('username', response.username);
+        localStorage.setItem('user_id', response.user_id);
+        window.location.href = '/auth/login';
+    }
 
 
     return (
@@ -44,7 +61,7 @@ export default function Register () {
 
 
                 {/* submit button */}
-                <button className="btn btn-wide p-0 border-0 bg-white text-black hover:text-white" >SUBMIT</button>
+                <button className="btn btn-wide p-0 border-0 bg-white text-black hover:text-white" onClick={() => handleSubmit()}>SUBMIT</button>
 
                 {/* login link */}
                 <a href="/auth/login" className="text-sm text-[#DE8286] underline">Already have an account? Login here</a>

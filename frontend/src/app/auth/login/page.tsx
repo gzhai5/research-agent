@@ -1,6 +1,9 @@
 "use client";
 import styles from '../styles.module.css';
 import React, { useState, useEffect } from 'react';
+import swal from 'sweetalert';
+import { login, refreshAccessToken } from '../../apis/auth/apis';
+import { isTokenExpired } from '../utils';
 
 
 export default function Login () {
@@ -9,6 +12,37 @@ export default function Login () {
     const [rememberMe, setRememberMe] = useState<boolean>(false);
 
 
+    const handleSignin = async () => {
+        if (username === '') swal('Error', 'Username cannot be empty', 'error');
+        else if (password === '') swal('Error', 'Password cannot be empty', 'error');
+
+        const response = await login({username, password});
+        if (rememberMe) localStorage.setItem('remember_me', 'true');
+        localStorage.setItem('username', response.username);
+        localStorage.setItem('user_id', response.user_id);
+        localStorage.setItem('access_token', response.access_token);
+        localStorage.setItem('refresh_token', response.refresh_token);
+        window.location.href = '/chat';
+    };
+
+    const handleRememberMeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setRememberMe(event.target.checked);
+    };
+
+    // if remember me is set, try instant login
+    useEffect(() => {
+        if (localStorage.getItem('remember_me') === 'true') {
+            const accessToken = localStorage.getItem('access_token');
+            const refreshToken = localStorage.getItem('refresh_token');
+            if (!accessToken || !refreshToken) return;
+            if (isTokenExpired(refreshToken)) return;
+            if (!isTokenExpired(accessToken)) window.location.href = '/form';
+            refreshAccessToken().then((response) => {
+                localStorage.setItem('access_token', response.access_token);
+                window.location.href = '/form';
+            });
+        }
+    }, []);
 
     return (
         <div className={`w-full h-screen flex justify-center items-center p-20 bg-[#000212] ${styles['radient-bg-fill']}`}>
@@ -35,13 +69,13 @@ export default function Login () {
                 {/* remember me */}
                 <div className="form-control w-full">
                     <label className="label cursor-pointer flex flex-row gap-2 justify-start bg-transparent">
-                        <input type="checkbox" className="checkbox" checked={rememberMe} />
+                        <input type="checkbox" className="checkbox" checked={rememberMe} onChange={handleRememberMeChange}/>
                         <span className="label-text text-gray-300">Remember me</span>
                     </label>
                 </div>
 
                 {/* sign in button */}
-                <button className="btn btn-wide p-0 border-0 bg-white text-black hover:text-white">SIGN IN</button>
+                <button className="btn btn-wide p-0 border-0 bg-white text-black hover:text-white" onClick={() => handleSignin()}>SIGN IN</button>
 
                 {/* register link */}
                 <a href="/auth/register" className="text-sm text-[#DE8286] underline">Dont have an account? Register here</a>
