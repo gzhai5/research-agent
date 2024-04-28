@@ -25,6 +25,8 @@ export default function Register () {
         const response = await register({username, password, email});
         localStorage.setItem('username', response.username);
         localStorage.setItem('user_id', response.user_id);
+        swal('Success', 'Registration successful', 'success');
+        window.location.href = '/auth/login';
     }
 
 
