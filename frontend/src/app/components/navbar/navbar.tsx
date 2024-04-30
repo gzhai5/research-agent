@@ -17,15 +17,6 @@ export default function Navbar() {
         window.location.href = '/';
     };
 
-
-    // handle cart drawer open/close
-    const toggleDrawer = () => {
-        const drawerCheckbox = document.getElementById('my-drawer-4') as HTMLInputElement;
-        if (drawerCheckbox) {
-            drawerCheckbox.checked = !drawerCheckbox.checked;
-        }
-    };
-
     return (
         <div className={`navbar bg-transparent`}>
 
@@ -42,7 +33,7 @@ export default function Navbar() {
                 <ul className="menu menu-horizontal px-1 text-[#F7F8F8]">
                     <li><a>Lab</a></li>
                     <li><a>Pricing</a></li>
-                    <li><a>Contact</a></li>
+                    <li><Link href="/contact">Contact</Link></li>
                 </ul>
             </div>
 

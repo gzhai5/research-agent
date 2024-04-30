@@ -69,7 +69,7 @@ export default function Login () {
                 {/* remember me */}
                 <div className="form-control w-full">
                     <label className="label cursor-pointer flex flex-row gap-2 justify-start bg-transparent">
-                        <input type="checkbox" className="checkbox" checked={rememberMe} onChange={handleRememberMeChange}/>
+                        <input type="checkbox" className="checkbox border-gray-600" checked={rememberMe} onChange={handleRememberMeChange}/>
                         <span className="label-text text-gray-300">Remember me</span>
                     </label>
                 </div>

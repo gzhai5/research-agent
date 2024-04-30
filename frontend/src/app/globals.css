@@ -19,6 +19,10 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+input:-webkit-autofill {
+  background-color: transparent;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
