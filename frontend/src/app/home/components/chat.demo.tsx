@@ -23,7 +23,7 @@ export default function ChatDemoSection() {
     }, []);
 
     return (
-        <div className="flex flex-col gap-6 w-full h-auto px-40 py-10 items-center">
+        <div className="flex flex-col gap-6 w-full h-auto px-40 py-20 items-center">
             <motion.div
                 className="border border-solid border-transparent w-full h-[45rem] rounded-xl"
                 initial={{ borderColor: 'transparent' }}

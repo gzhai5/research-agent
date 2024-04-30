@@ -1,6 +1,6 @@
 export default function Foobar() {
     return (
-        <footer className={`footer footer-center p-10 text-primary-content bg-transparent}`}>
+        <footer className='footer footer-center p-10 text-primary-content bg-transparent z-50'>
             <aside>
                 <p className="font-bold text-[#F7F8F8]">
                     Research Agents <br/>Your powerful & personalized research companion

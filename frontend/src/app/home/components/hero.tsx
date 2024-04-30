@@ -6,7 +6,7 @@ export default function HeroSection() {
     const version = `${process.env.NEXT_PUBLIC_VERSION}`;
 
     return (
-        <div className="flex flex-col gap-6 w-full px-20 py-10 items-center">
+        <div className="flex flex-col gap-6 w-full px-20 py-20 items-center">
 
             {/* version info */}
             <div className="flex bg-[#FFFFFF]/[0.1] py-1.5 px-3 rounded-xl justify-center items-center">

@@ -4,7 +4,7 @@ import styles from '../styles.module.css';
 
 export default function TeamsSection() {
     return (
-        <div className={`flex flex-col gap-6 w-full px-20 py-10 items-center ${styles['radient-bg-bot-fill']}`}>
+        <div className={`flex flex-col gap-6 w-full px-20 py-20 items-center ${styles['radient-bg-bot-fill']}`}>
 
             {/* title texts */}
             <div className="flex flex-col justify-center items-center">
