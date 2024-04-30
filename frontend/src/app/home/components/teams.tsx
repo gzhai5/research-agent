@@ -9,7 +9,7 @@ export default function TeamsSection() {
             {/* title texts */}
             <div className="flex flex-col justify-center items-center">
                 <p className="text-center text-[#B4BCD0] text-lg font-normal">Powering global research groups.</p>
-                <p className="text-center text-[#F7F8F8] text-lg font-normal">Backed up by top world universities.</p>
+                <p className="text-center text-[#F7F8F8] text-lg font-normal">Backed up by top universities.</p>
             </div>
 
             {/* school logos */}
