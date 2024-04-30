@@ -1,12 +1,19 @@
+"use client";
+import React from 'react';
 import styles from '../styles.module.css';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 
 export default function HeroSection() {
     const version = `${process.env.NEXT_PUBLIC_VERSION}`;
 
     return (
-        <div className="flex flex-col gap-6 w-full px-20 py-20 items-center">
+        <motion.div 
+            className="flex flex-col gap-6 w-full px-20 py-20 items-center"
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ type: "spring", bounce: 0.25, duration: 1 }}>
 
             {/* version info */}
             <div className="flex bg-[#FFFFFF]/[0.1] py-1.5 px-3 rounded-xl justify-center items-center">
@@ -35,6 +42,6 @@ export default function HeroSection() {
                 </button>
             </Link>
 
-        </div>
+        </motion.div>
     );
 }
