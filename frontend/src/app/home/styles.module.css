@@ -12,6 +12,10 @@
     background: radial-gradient(circle at center, rgba(120, 119, 198, 0.3) 10%, rgba(255, 255, 255, 0) 100%);
 }
 
+.radient-bg-bot-fill {
+    background: radial-gradient(ellipse at 50% 90%, rgba(120, 119, 198, 0.3) 5%, rgba(255, 255, 255, 0) 70%);
+}
+
 .gradient-big-tagline {
     background: linear-gradient(45deg , rgba(255, 255, 255, 1) 30%, rgba(255, 255, 255, 0.38) 100%);
     -webkit-background-clip: text;
