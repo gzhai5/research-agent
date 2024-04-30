@@ -31,8 +31,10 @@ export default function Navbar() {
 
             {/* drawer */}
             <div className="navbar-start">
-                <Image src="/agent-logo.png" alt="logo" width={30} height={30} />
-                <a className="btn btn-ghost text-2xl text-[#F7F8F8] font-medium">Research Agents</a>
+                <Link href="/" className="btn btn-ghost text-2xl text-[#F7F8F8] font-medium">
+                    <Image src="/agent-logo.png" alt="logo" width={30} height={30} />
+                    Research Agents
+                </Link>
             </div>
 
             {/* title */}
