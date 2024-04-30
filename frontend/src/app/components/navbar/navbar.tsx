@@ -2,6 +2,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 
 export default function Navbar() {
@@ -30,8 +31,10 @@ export default function Navbar() {
 
             {/* drawer */}
             <div className="navbar-start">
-                <Image src="/agent-logo.png" alt="logo" width={30} height={30} />
-                <a className="btn btn-ghost text-2xl text-[#F7F8F8] font-medium">Research Agents</a>
+                <Link href="/" className="btn btn-ghost text-2xl text-[#F7F8F8] font-medium">
+                    <Image src="/agent-logo.png" alt="logo" width={30} height={30} />
+                    Research Agents
+                </Link>
             </div>
 
             {/* title */}
@@ -54,9 +57,18 @@ export default function Navbar() {
 
                     {/* dropdown content */}
                     <ul tabIndex={0} className={`menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-slate-100 rounded-box w-52 text-[#F7F8F8] bg-transparent`}>
-                        <li><a className="text-[#F7F8F8]">Profile</a></li>
-                        <li><a className="text-[#F7F8F8]">Settings</a></li>
-                        <li><a className="text-[#F7F8F8]" onClick={() => handleLogout()}>Logout</a></li>
+                        {!username ? (
+                            <>  
+                                <li><Link href="auth/login" className="text-[#F7F8F8]">Login</Link></li>
+                                <li><Link href="auth/register" className="text-[#F7F8F8]">Register</Link></li>
+                            </>
+                        ) : (
+                            <>
+                                <li><a className="text-[#F7F8F8]">Profile</a></li>
+                                <li><a className="text-[#F7F8F8]">Settings</a></li>
+                                <li><a className="text-[#F7F8F8]" onClick={() => handleLogout()}>Logout</a></li>
+                            </>
+                        )}
                     </ul>
                 </div>
             </div>

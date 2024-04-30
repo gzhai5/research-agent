@@ -1,10 +1,10 @@
-import Auth from "./auth/auth";
+import LangdingPage from "./home/home";
 
 
 export default function Home() {
   return (
     <div>
-      <Auth status="login" />
+      <LangdingPage />
     </div>
   );
 }
