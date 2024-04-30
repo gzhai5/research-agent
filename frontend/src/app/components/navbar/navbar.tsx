@@ -2,6 +2,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 
 export default function Navbar() {
@@ -54,9 +55,22 @@ export default function Navbar() {
 
                     {/* dropdown content */}
                     <ul tabIndex={0} className={`menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-slate-100 rounded-box w-52 text-[#F7F8F8] bg-transparent`}>
-                        <li><a className="text-[#F7F8F8]">Profile</a></li>
-                        <li><a className="text-[#F7F8F8]">Settings</a></li>
-                        <li><a className="text-[#F7F8F8]" onClick={() => handleLogout()}>Logout</a></li>
+                        {!username ? (
+                            <>  
+                                <Link href="/auth/login">
+                                    <li><a className="text-[#F7F8F8]">Login</a></li>
+                                </Link>
+                                <Link href="/auth/register">
+                                    <li><a className="text-[#F7F8F8]">Register</a></li>
+                                </Link>
+                            </>
+                        ) : (
+                            <>
+                                <li><a className="text-[#F7F8F8]">Profile</a></li>
+                                <li><a className="text-[#F7F8F8]">Settings</a></li>
+                                <li><a className="text-[#F7F8F8]" onClick={() => handleLogout()}>Logout</a></li>
+                            </>
+                        )}
                     </ul>
                 </div>
             </div>
