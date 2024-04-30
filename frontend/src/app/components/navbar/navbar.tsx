@@ -57,12 +57,8 @@ export default function Navbar() {
                     <ul tabIndex={0} className={`menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-slate-100 rounded-box w-52 text-[#F7F8F8] bg-transparent`}>
                         {!username ? (
                             <>  
-                                <Link href="/auth/login">
-                                    <li><a className="text-[#F7F8F8]">Login</a></li>
-                                </Link>
-                                <Link href="/auth/register">
-                                    <li><a className="text-[#F7F8F8]">Register</a></li>
-                                </Link>
+                                <li><Link href="auth/login" className="text-[#F7F8F8]">Login</Link></li>
+                                <li><Link href="auth/register" className="text-[#F7F8F8]">Register</Link></li>
                             </>
                         ) : (
                             <>
