@@ -4,7 +4,7 @@ services:
 
   backend:
     build: ../backend
-    container_name: lugaai-backend
+    container_name: research-agents-backend
     restart: always
     env_file:
       - ../backend/.env.dev
@@ -14,7 +14,7 @@ services:
       - 8018:8000
 
   dozzle:
-    container_name: lugaai-monitor-dozzle
+    container_name: research-agents-monitor-dozzle
     restart: always
     image: amir20/dozzle:latest
     volumes:
@@ -24,6 +24,7 @@ services:
 
   nginx:
     image: nginx:latest
+    container_name: research-agents-nginx
     ports:
       - "80:80"
       - "443:443"
