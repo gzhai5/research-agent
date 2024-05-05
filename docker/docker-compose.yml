@@ -4,7 +4,7 @@ services:
 
   backend:
     build: ../backend
-    container_name: lugaai-backend
+    container_name: research-agents-backend
     restart: always
     env_file:
       - ../backend/.env.dev
@@ -12,15 +12,6 @@ services:
       - ../backend:/app
     ports:
       - 8018:8000
-
-  dozzle:
-    container_name: lugaai-monitor-dozzle
-    restart: always
-    image: amir20/dozzle:latest
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    ports:
-      - 9999:8080
 
 networks:
   default:

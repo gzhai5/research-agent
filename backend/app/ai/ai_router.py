@@ -11,9 +11,9 @@ router = APIRouter(prefix="/ai", tags=["ai"])
 
 # POST /ai/invoke
 @router.post("/invoke", response_description="invoke the AI model", status_code=200)
-def invoke_ai(body: AIInvokeRequest, user_id=Depends(get_current_user)):
+async def invoke_ai(body: AIInvokeRequest, user_id=Depends(get_current_user)):
     try:
-        response = ai_service.invoke_text(body.model, body.text)
+        response = await ai_service.invoke_text(body.model, body.text)
         logger.info('AI invoked successfully')
         return response
     except Exception as e:

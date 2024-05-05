@@ -6,6 +6,7 @@ from langchain_community.llms import Ollama
 from langchain_community.embeddings.fastembed import FastEmbedEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from loguru import logger
+from app.s3.s3_service import s3_service
 
 
 class CommonService:
@@ -15,7 +16,7 @@ class CommonService:
         self.cached_llm = Ollama(model="llama3")
         self.vector_store_path = f"{os.path.dirname(os.path.abspath(__file__))}/../../vector_store"
     
-    def upload_pdf(self, file: UploadFile):
+    async def upload_pdf(self, file: UploadFile, user_id: str):
         # save the file to a temp pdf folder
         saved_file_path = f"{os.path.dirname(os.path.abspath(__file__))}/../../temp/{file.filename}"
         with open(saved_file_path, "wb") as buffer:
@@ -35,6 +36,10 @@ class CommonService:
         vector_store = Chroma.from_documents(documents=chunks, embedding=self.embedding, persist_directory=self.vector_store_path)
         vector_store.persist()
 
+        # upload to s3
+        pdf_s3_key = await s3_service.upload_pdf(file, user_id)
+        vector_store_s3_key = await s3_service.upload_folder(self.vector_store_path, user_id, topic="vector_store")
+
         # clean up
         os.remove(saved_file_path)
 
@@ -42,6 +47,8 @@ class CommonService:
             "filename": file.filename,
             "doc_length": len(docs),
             "chunk_length": len(chunks),
+            "pdf_s3_key": pdf_s3_key,
+            "vector_store_s3_key": vector_store_s3_key
         }
 
 common_service = CommonService()
