@@ -7,6 +7,7 @@ from app.utils.database import test_mongodb_connection
 from app.common.common_router import router as common_router
 from app.auth.auth_router import router as auth_router
 from app.ai.ai_router import router as ai_router
+from app.s3.s3_router import router as s3_router
 
 
 # Create the app
@@ -37,6 +38,7 @@ app.add_middleware(
 app.include_router(common_router)
 app.include_router(auth_router)
 app.include_router(ai_router)
+app.include_router(s3_router)
 
 
 # Home route

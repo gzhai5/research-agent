@@ -1,18 +1,18 @@
 from fastapi import APIRouter, HTTPException, UploadFile, File, Depends
 from loguru import logger
-from app.common.common_service import common_service
+from app.s3.s3_service import s3_service
 from app.auth.utils.utils import get_current_user
 
 
 # define the router
-router = APIRouter(prefix="/common", tags=["common"])
+router = APIRouter(prefix="/s3", tags=["s3"])
 
 
-# POST /common/pdf/upload
+# POST /s3/pdf/upload
 @router.post("/pdf/upload", response_description="Upload a PDF file", status_code=201)
 async def upload_pdf(file: UploadFile = File(...), user_id=Depends(get_current_user)):
     try:
-        response = await common_service.upload_pdf(file, user_id)
+        response = await s3_service.upload_pdf(file, user_id)
         return response
     except HTTPException as http_exception:
         raise http_exception
