@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from '../styles.module.css';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -7,7 +7,12 @@ import { motion } from 'framer-motion';
 
 export default function HeroSection() {
     const version = `${process.env.NEXT_PUBLIC_VERSION}`;
-    const [isLoggedIn, setIsLoggedIn] = useState<boolean>(localStorage.getItem('username') ? true : false);
+    const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+
+
+    useEffect(() => {
+        setIsLoggedIn(localStorage.getItem('username') ? true : false);
+    }, []);
 
 
     return (
